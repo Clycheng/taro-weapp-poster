@@ -12,6 +12,7 @@ const Index = ({
   background = 'white',
   onRender,
   list = [],
+  style,
 }) => {
   const ctx = createCanvasContext('shareCanvas');
 
@@ -52,7 +53,7 @@ const Index = ({
           height,
           opacity,
           background,
-          // display: 'none',
+          ...style,
         }}
         disableScroll
       ></Canvas>

@@ -60,8 +60,8 @@
 | text  | 否 | string | 750px | 文字，type为text时生效 |
 | color  | 否 | number | 1 | 文字颜色，type为text时生效|
 | fontSize  | 否 | string | white | 文字大小， type为text时生效 |
-| left | 否| array | [] |位置，距离海报左边的距离|
-| top | 否| array | [] |位置，距离海报顶部的距离|
+| left | 否| array | [] |坐标 X|
+| top | 否| array | [] |坐标 Y|
 
 
 - 图像绘制（占支持矩形）
@@ -75,8 +75,8 @@
 | url  | 否 | string |  | 图片路径|
 | width | 否| number |  |图像宽度|
 | height | 否| number |  |图像高度|
-| left | 否| number |  |图像左边距|
-| top | 否| number |  |图像右边距|
+| left | 否| number |  |坐标 X|
+| top | 否| number |  |坐标 Y|
 
 
 ####  关于作者
