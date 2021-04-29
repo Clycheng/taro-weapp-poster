@@ -7,34 +7,34 @@
 - `npm install taro-weapp-poster`
 
 ```javascript
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import { Image } from '@tarojs/components';
+import { Image } from "@tarojs/components";
 
-import PosterModal from '../../components/Poster';
-import { shareBase } from '../../const/index';
+import PosterModal from "../../components/Poster";
+import { shareBase } from "../../const/index";
 
 const Index = (props) => {
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useState("");
 
   return (
     <>
-      <Image style={{ width: '100vw' }} mode="widthFix" src={url}></Image>
+      <Image style={{ width: "100vw" }} mode="widthFix" src={url}></Image>
       <PosterModal
-        onRender={(res) => setUrl(res?.tempFilePath ?? '')}
+        onRender={(res) => setUrl(res?.tempFilePath ?? "")}
         width="320px"
         height="568px"
         list={[
           {
-            type: 'text',
-            text: '这是文字',
-            fontSize: '56px',
-            color: '#333',
+            type: "text",
+            text: "这是文字",
+            fontSize: "56px",
+            color: "#333",
             X: 10,
             Y: 20,
           },
           {
-            type: 'image',
+            type: "image",
             imgType: 1, // 图片类型，圆形1，矩形0
             urlType: 1, // 2:本地路径 或者网络路径:0 base64 1
             url: shareBase,
@@ -43,11 +43,11 @@ const Index = (props) => {
             roundR: 50,
           },
           {
-            type: 'image',
+            type: "image",
             imgType: 0, // 图片类型，圆形1，矩形0
             urlType: 0, // 1:本地路径 或者网络路径:2
             url:
-              'https://img.kaikeba.com/a/11344130301202fadm.png?imageView2/0/interlace/1/q/80|imageslim',
+              "https://img.kaikeba.com/a/11344130301202fadm.png?imageView2/0/interlace/1/q/80|imageslim",
             width: 50,
             height: 50,
             X: 200,
@@ -76,39 +76,39 @@ export default Index;
 
 - 文字绘制
 
-|  参数名  | 是否必传 |  类型  | 默认值 |              说明              |
-| :------: | :------: | :----: | :----: | :----------------------------: | -------- |
-|   type   |    否    | string |  text  |                                | 元素类型 |
-|   text   |    否    | string | 750px  |   文字，type 为 text 时生效    |
-|  color   |    否    | number |   1    | 文字颜色，type 为 text 时生效  |
-| fontSize |    否    | string | white  | 文字大小， type 为 text 时生效 |
-|    X     |    否    | array  |   []   |             坐标 X             |
-|    Y     |    否    | array  |   []   |             坐标 Y             |
+| 参数名 | 是否必传 | 类型 | 默认值 | 说明 |
+| :------: | :------: | :----: | :----: | :----------------------------: | 
+| type | 否 | string | text | | 元素类型 |
+| text | 否 | string | 750px | 文字，type 为 text 时生效 |
+| color | 否 | number | 1 | 文字颜色，type 为 text 时生效 |
+| fontSize | 否 | string | white | 文字大小， type 为 text 时生效 |
+| X | 否 | array | [] | 坐标 X |
+| Y | 否 | array | [] | 坐标 Y |
 
 - 图像绘制（矩形图像）
 
-| 参数名  | 是否必传 |  类型  | 默认值 |                     说明                      |
-| :-----: | :------: | :----: | :----: | :-------------------------------------------: | -------- |
-|  type   |    否    | string |        |                     image                     | 元素类型 |
-| imgType |    否    | string |   0    |            图片类型：0-矩形 1-圆形            |
-| urlType |    否    | number |   0    | 图片路径类型：0-网络路径，1-base64 2-本地路径 |
-|   url   |    否    | string |        |                   图片路径                    |
-|  width  |    否    | number |        |                   图像宽度                    |
-| height  |    否    | number |        |                   图像高度                    |
-|    X    |    否    | number |        |                    坐标 X                     |
-|    Y    |    否    | number |        |                    坐标 Y                     |
+| 参数名 | 是否必传 | 类型 | 默认值 | 说明 |
+| :-----: | :------: | :----: | :----: | :-------------------------------------------: | 
+| type | 否 | string | | image | 元素类型 |
+| imgType | 否 | string | 0 | 图片类型：0-矩形 1-圆形 |
+| urlType | 否 | number | 0 | 图片路径类型：0-网络路径，1-base64 2-本地路径 |
+| url | 否 | string | | 图片路径 |
+| width | 否 | number | | 图像宽度 |
+| height | 否 | number | | 图像高度 |
+| X | 否 | number | | 坐标 X |
+| Y | 否 | number | | 坐标 Y |
 
 - 图像绘制（圆形图像）
 
-| 参数名  | 是否必传 |  类型  | 默认值 |                     说明                      |
-| :-----: | :------: | :----: | :----: | :-------------------------------------------: | -------- |
-|  type   |    否    | string |        |                     image                     | 元素类型 |
-| imgType |    否    | string |   1    |            图片类型：0-矩形 1-圆形            |
-| urlType |    否    | number |   0    | 图片路径类型：0-网络路径，1-base64 2-本地路径 |
-|   url   |    否    | string |        |                   图片路径                    |
-| roundX  |    否    | number |        |                 圆心 X 轴坐标                 |
-| roundY  |    否    | number |        |                 圆心 Y 轴左边                 |
-| roundR  |    否    | number |        |                    圆半径                     |
+| 参数名 | 是否必传 | 类型 | 默认值 | 说明 |
+| :-----: | :------: | :----: | :----: | :--------------------------------: | 
+| type | 否 | string | | image | 元素类型 |
+| imgType | 否 | string | 1 | 图片类型：0-矩形 1-圆形 |
+| urlType | 否 | number | 0 | 图片路径类型：0-网络路径，1-base64 2-本地路径 |
+| url | 否 | string | | 图片路径 |
+| roundX | 否 | number | | 圆心 X 轴坐标 |
+| roundY | 否 | number | | 圆心 Y 轴左边 |
+| roundR | 否 | number | | 圆半径 |
 
 #### 版本说明
 
@@ -124,4 +124,4 @@ export default Index;
 
 微信: cxl1249587790 (备注来源)
 
-email: cxlY@163.com
+email: cxltop@163.com

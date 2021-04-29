@@ -1,6 +1,6 @@
 {
   "name": "taro-weapp-poster",
-  "version": "1.2.0",
+  "version": "1.2.5",
   "description": "Taro poster builder",
   "main": "index.js",
   "keywords": ["海报生成","taro","taro小程序海报生成","微信小程序海报生成","taro-weapp-poster"],
