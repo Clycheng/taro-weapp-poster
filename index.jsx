@@ -1,43 +1,52 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Canvas } from '@tarojs/components';
-import { createCanvasContext, canvasToTempFilePath } from '@tarojs/taro';
-import { textRender } from './lib/textRender';
-import { imgRender } from './lib/imgRender';
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+import { Canvas } from "@tarojs/components";
+import { createCanvasContext, canvasToTempFilePath } from "@tarojs/taro";
+import { textRender } from "./lib/textRender";
+import { imgRender } from "./lib/imgRender";
+import { shapeRender } from "./lib/shapeRender";
 
 const Index = ({
-  height = '414rpx',
-  width = '896rpx',
+  height = "414rpx",
+  width = "896rpx",
   opacity = 1,
-  background = 'white',
+  background = "white",
   onRender,
   list = [],
   style,
 }) => {
-  const ctx = createCanvasContext('shareCanvas');
+  const ctx = createCanvasContext("shareCanvas");
 
   const tpyeFn = {
     text: (obj) => textRender({ ...obj, ctx }),
-    image: (obj) => imgRender({ ...obj, ctx }),
+    image: async (obj) => await imgRender({ ...obj, ctx }),
+    shape: (obj) => shapeRender({ ...obj, ctx }),
   };
-  const init = () => {
-    list.forEach(async (item, index) => {
-      await tpyeFn[item?.type](item);
-      if (index === list?.length - 1) {
-        ctx.draw(false, (res) => {
-          canvasToTempFilePath({
-            canvasId: 'shareCanvas',
-            success: (res) => {
-              onRender && onRender(res);
-            },
-          });
+  const init = async (list) => {
+    if (list.length === 0) {
+      ctx.draw(true, () => {
+        canvasToTempFilePath({
+          canvasId: "shareCanvas",
+          success: (res) => {
+            onRender && onRender(res);
+          },
+          fail: (res) => {
+            console.warn("fail", res);
+          },
+          complete: (res) => {
+            console.log("complete", res);
+          },
         });
-      }
-    });
+      });
+      return false;
+    }
+    const item = list[0];
+
+    await tpyeFn[item?.type]({ ...item, init, list });
   };
 
   useEffect(() => {
-    init();
+    init(list);
   }, []);
 
   return (
@@ -46,7 +55,7 @@ const Index = ({
         id="shareCanvas"
         canvasId="shareCanvas"
         style={{
-          position: 'absolute',
+          position: "absolute",
           left: `-${width}`,
           top: `-${height}`,
           width,
