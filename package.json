@@ -1,9 +1,17 @@
 {
   "name": "taro-weapp-poster",
-  "version": "1.2.9",
+  "version": "1.3.0",
   "description": "Taro poster builder",
   "main": "index.js",
   "keywords": ["海报生成","taro","taro小程序海报生成","微信小程序海报生成","taro-weapp-poster"],
+   "repository": {
+    "type": "git",
+    "url": "https://github.com/Clycheng/taro-weapp-poster",
+    "directory": "packages/taro-weapp-poster"
+  },
+   "bugs": {
+    "url": "https://github.com/Clycheng/taro-weapp-poster/issues"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

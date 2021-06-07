@@ -2,6 +2,9 @@
 
 > [taro-weapp-poster](https://github.com/Clycheng/taro-weapp-poster) 是一款 taro 小程序海报生成器，采用 taro 内置 createCanvasContext 方法进行 canvas 绘制生成，支持绘制文字/图片
 
+## git 地址
+
+[https://github.com/Clycheng/taro-weapp-poster](https://github.com/Clycheng/taro-weapp-poster)
 ## 使用说明
 
 - `npm install taro-weapp-poster`
