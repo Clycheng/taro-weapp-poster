@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {Canvas} from '@tarojs/components';
-import {createCanvasContext, canvasToTempFilePath} from '@tarojs/taro';
-import {textRender} from './lib/textRender';
-import {imgRender} from './lib/imgRender';
-import {shapeRender} from './lib/shapeRender';
-import {routeRender} from './lib/routeRender';
+import { Canvas } from '@tarojs/components';
+import { createCanvasContext, canvasToTempFilePath } from '@tarojs/taro';
+import { textRender } from './lib/textRender';
+import { imgRender } from './lib/imgRender';
+import { shapeRender } from './lib/shapeRender';
+import { routeRender } from './lib/routeRender';
 
 const Index = ({
   height = '414rpx',
@@ -16,14 +16,14 @@ const Index = ({
   list = [],
   style,
 }) => {
-  // const ctx = createCanvasContext('shareCanvas');
-  console.log('object', createCanvasContext, canvasToTempFilePath);
-  const ctx = 1;
+  const ctx = createCanvasContext('shareCanvas');
+  // console.log('object', createCanvasContext, canvasToTempFilePath);
+  // const ctx = 1;
 
   const tpyeFn = {
-    text: (obj) => textRender({...obj, ctx}),
-    image: async (obj) => await imgRender({...obj, ctx}),
-    shape: (obj) => shapeRender({...obj, ctx}),
+    text: (obj) => textRender({ ...obj, ctx }),
+    image: async (obj) => await imgRender({ ...obj, ctx }),
+    shape: (obj) => shapeRender({ ...obj, ctx }),
     // route: (obj) => shapeRender({...obj, ctx}),
   };
   const init = async (list) => {
@@ -46,7 +46,7 @@ const Index = ({
     }
     const item = list[0];
 
-    await tpyeFn[item?.type]({...item, init, list});
+    await tpyeFn[item?.type]({ ...item, init, list });
   };
 
   useEffect(() => {
