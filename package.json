@@ -1,6 +1,6 @@
 {
   "name": "taro-weapp-poster",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "Taro poster builder",
   "main": "index.js",
   "keywords": [

@@ -19,7 +19,7 @@ import React, { useEffect, useState } from "react";
 import { Image } from "@tarojs/components";
 import { previewImage } from "@tarojs/taro";
 
-import PosterModal from "../../components/Poster";
+import PosterModal from "taro-weapp-poster";
 import { shareBase } from "../../const/index";
 
 const Index = (props) => {
