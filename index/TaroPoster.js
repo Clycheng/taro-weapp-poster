@@ -2,12 +2,11 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Canvas } from '@tarojs/components';
 import { createCanvasContext, canvasToTempFilePath } from '@tarojs/taro';
-import { textRender } from './lib/textRender';
-import { imgRender } from './lib/imgRender';
-import { shapeRender } from './lib/shapeRender';
-import { routeRender } from './lib/routeRender';
+import { textRender } from '../lib/taro/textRender';
+import { imgRender } from '../lib/taro/imgRender';
+import { shapeRender } from '../lib/taro/shapeRender';
 
-const Index = ({
+const TaroPoster = ({
   height = '414rpx',
   width = '896rpx',
   opacity = 1,
@@ -17,8 +16,6 @@ const Index = ({
   style,
 }) => {
   const ctx = createCanvasContext('shareCanvas');
-  // console.log('object', createCanvasContext, canvasToTempFilePath);
-  // const ctx = 1;
 
   const tpyeFn = {
     text: (obj) => textRender({ ...obj, ctx }),
@@ -74,11 +71,11 @@ const Index = ({
   );
 };
 
-Index.propTypes = {
+TaroPoster.propTypes = {
   height: PropTypes.string,
   width: PropTypes.string,
   opacity: PropTypes.number,
   background: PropTypes.string,
   list: PropTypes.arrayOf(PropTypes.object),
 };
-export default Index;
+export default TaroPoster;
